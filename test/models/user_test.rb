@@ -1,4 +1,5 @@
 require 'test_helper'
+#this file testes out the user.rb
 
 class UserTest < ActiveSupport::TestCase
   
@@ -9,11 +10,15 @@ class UserTest < ActiveSupport::TestCase
   
   test "should be valid" do
     assert @user.valid?
+    #when you run valid?, its running everything in user.rb
+    
   end
   
   test "name should be present" do
     @user.name = " "
     assert_not @user.valid?
+    #so what we're doing here is providing a value, and using the
+    #validation we wrote in user.rb to test
   end
   
   test "email should be present" do
