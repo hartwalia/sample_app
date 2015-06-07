@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   get 'about'   =>  'static_pages#about'
   get 'contact' =>  'static_pages#contact'
   get 'signup'  =>  'users#new'
-
+  resources     :users
+  
+  #why resources only for users here ? because its the only that has a data model
+  #should only use resources for stuff with models, db stuff
 end
