@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   
-  attr_accessor :remember_token
+  attr_accessor :remember_token #this defines remember_token and creates a getter function automatically
+                                #acessor implies reading so getter, its not a mutator, no writing !
   
   before_save { email.downcase! }
   
@@ -16,12 +17,16 @@ class User < ActiveRecord::Base
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
+    BCrypt::Password.create(string, cost: cost) #what is cost ? cars performance measured in BHP
+                                                #cpu performance measured in cost, so its saying when u encrypt 
+                                                #this password, it must take a minimum effort of this much cost so 
+                                                #any attacker has to use as much power to crack it
   end
   
   # Returns a random token.
   def User.new_token
-    SecureRandom.urlsafe_base64
+    SecureRandom.urlsafe_base64 # SecureRandom is a static class, how i know? 
+                                # coz i can call the method urlsafe_base64 without having an object
   end
   
   # Remembers a user in the database for use in persistent sessions.
