@@ -8,8 +8,4 @@ class ApplicationController < ActionController::Base
                          #we are importing it here because application controller is global like
                          #it grants everything access to the session_helper "class" we wrote
   
-  def hello
-    render text: "hello, world!"
-  end
-  
 end
